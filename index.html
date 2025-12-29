@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Dermafix24 | Medical Aesthetics</title>
+    <title>Dermafix24 | Bespoke Medical Aesthetics</title>
     <!-- Premium Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,6 +39,10 @@
             padding-bottom: 60px;
         }
 
+        body.menu-open {
+            overflow: hidden; /* Prevent scrolling when menu is open */
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -59,7 +63,7 @@
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 1000;
+            z-index: 2500; /* Increased to be higher than the side-menu */
             box-shadow: 0 1px 15px rgba(0,0,0,0.03);
             transition: var(--transition);
         }
@@ -75,6 +79,13 @@
             letter-spacing: 3px;
             font-weight: 700;
             text-transform: uppercase;
+            position: relative;
+            z-index: 2600;
+        }
+
+        .desktop-nav {
+            display: flex;
+            align-items: center;
         }
 
         .desktop-nav a {
@@ -105,6 +116,114 @@
             color: var(--white) !important;
         }
 
+        /* HAMBURGER MENU TOGGLE */
+        .menu-toggle {
+            width: 30px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            z-index: 2600; /* Ensuring it's above the menu overlay */
+            margin-left: 30px;
+            position: relative;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: var(--dark-grey);
+            transition: var(--transition);
+        }
+
+        /* Transform lines into a cross (X) */
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* FULLSCREEN OVERLAY MENU */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            z-index: 2000; /* Lower than navbar so toggle stays visible */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-100%); 
+            transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .side-menu.active {
+            transform: translateY(0);
+        }
+
+        .side-menu-content {
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            padding-top: 50px;
+        }
+
+        .side-menu-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .side-menu-content li {
+            margin: 30px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .side-menu.active li {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered animation for menu items */
+        .side-menu.active li:nth-child(1) { transition-delay: 0.2s; }
+        .side-menu.active li:nth-child(2) { transition-delay: 0.3s; }
+        .side-menu.active li:nth-child(3) { transition-delay: 0.4s; }
+        .side-menu.active li:nth-child(4) { transition-delay: 0.5s; }
+        .side-menu.active li:nth-child(5) { transition-delay: 0.6s; }
+
+        .side-menu-content a {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            text-decoration: none;
+            color: var(--dark-grey);
+            letter-spacing: 2px;
+            transition: var(--transition);
+            display: block;
+        }
+
+        .side-menu-content a:hover {
+            color: var(--beige-accent);
+            transform: scale(1.05);
+        }
+
+        .close-menu-text {
+            font-size: 0.8rem !important;
+            margin-top: 20px;
+            letter-spacing: 4px !important;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif !important;
+            opacity: 0.6;
+            cursor: pointer;
+        }
+
         /* HERO SECTION */
         .hero {
             height: 85vh;
@@ -120,7 +239,7 @@
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(255, 255, 255, 0.40); /* Increased opacity and switched to white-base for better contrast with dark text */
+            background: rgba(255, 255, 255, 0.40); 
         }
 
         .hero-content {
@@ -149,7 +268,7 @@
             font-size: 1.1rem;
             max-width: 650px;
             margin: 0 auto 45px;
-            font-weight: 600; /* Made bold per request */
+            font-weight: 600; 
             color: var(--dark-grey);
         }
 
@@ -469,12 +588,13 @@
         }
 
         /* RESPONSIVE */
-        @media (max-width: 768px) {
+        @media (max-width: 991px) {
             .desktop-nav { display: none; }
             .hero-title { font-size: 3.2rem; }
             .mission-statement p { font-size: 1.4rem; }
             .section-title { font-size: 1.8rem; }
             .hero { height: 75vh; }
+            .side-menu-content a { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -484,19 +604,35 @@
 <header class="navbar">
     <div class="container nav-container">
         <div class="logo">Dermafix24</div>
-        <nav class="desktop-nav">
-            <a href="#home">Home</a>
-            <a href="#concerns">Concern</a>
-            <a href="#treatments">Treatment</a>
-            <a href="#about">The Clinic</a>
-            <a href="#contact" class="nav-cta">Book Appointment</a>
-        </nav>
-        <div class="nav-icons" style="display:flex; gap:20px; font-size: 14px; color: var(--dark-grey);">
-            <span>🔍</span>
-            <span>👤</span>
+        <div style="display: flex; align-items: center;">
+            <nav class="desktop-nav">
+                <a href="#home">Home</a>
+                <a href="#concerns">Concern</a>
+                <a href="#treatments">Treatment</a>
+                <a href="#about">The Clinic</a>
+                <a href="#contact" class="nav-cta">Book Appointment</a>
+            </nav>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </div>
 </header>
+
+<!-- FULLSCREEN SIDE MENU -->
+<div class="side-menu" id="sideMenu">
+    <div class="side-menu-content">
+        <ul>
+            <li><a href="#concerns" class="menu-link">Common Concerns</a></li>
+            <li><a href="#treatments" class="menu-link">Clinical Solutions</a></li>
+            <li><a href="#about" class="menu-link">The Philosophy</a></li>
+            <li><a href="#" class="menu-link" id="menuBookBtn">Book Appointment</a></li>
+            <li><a href="javascript:void(0)" class="menu-link close-menu-text" id="manualClose">✕ Close</a></li>
+        </ul>
+    </div>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -650,11 +786,39 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.getElementById('menuToggle');
+        const sideMenu = document.getElementById('sideMenu');
+        const menuLinks = document.querySelectorAll('.menu-link');
+        const manualClose = document.getElementById('manualClose');
+        const body = document.body;
+
+        // Toggle Side Menu
+        function toggleMenu() {
+            menuToggle.classList.toggle('active');
+            sideMenu.classList.toggle('active');
+            body.classList.toggle('menu-open');
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        manualClose.addEventListener('click', toggleMenu);
+
+        // Close menu when a link is clicked
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (sideMenu.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+
         // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === "#") return;
+                
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(href);
                 if (target) {
                     window.scrollTo({
                         top: target.offsetTop - 90,
@@ -670,7 +834,7 @@
             const overlay = document.createElement('div');
             overlay.style.cssText = `
                 position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                background: rgba(50, 50, 50, 0.98); z-index: 10000;
+                background: rgba(50, 50, 50, 0.98); z-index: 10005;
                 display: flex; align-items: center; justify-content: center;
                 backdrop-filter: blur(15px);
             `;
@@ -692,7 +856,10 @@
             overlay.onclick = (event) => { if(event.target === overlay) overlay.remove(); };
         };
 
-        document.querySelectorAll('.nav-cta, .primary-btn, #mobileBook').forEach(btn => btn.addEventListener('click', openModal));
+        // Bind all booking triggers
+        document.querySelectorAll('.nav-cta, .primary-btn, #mobileBook, #menuBookBtn, #heroBooking').forEach(btn => {
+            btn.addEventListener('click', openModal);
+        });
 
         // Scroll Navbar effect
         const navbar = document.querySelector('.navbar');
