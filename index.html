@@ -40,7 +40,7 @@
         }
 
         body.menu-open {
-            overflow: hidden; /* Prevent scrolling when menu is open */
+            overflow: hidden; 
         }
 
         .container {
@@ -137,7 +137,6 @@
             transition: var(--transition);
         }
 
-        /* Transform lines into a cross (X) */
         .menu-toggle.active span:nth-child(1) {
             transform: translateY(9px) rotate(45deg);
         }
@@ -192,12 +191,12 @@
             transform: translateY(0);
         }
 
-        /* Staggered animation for menu items */
         .side-menu.active li:nth-child(1) { transition-delay: 0.2s; }
         .side-menu.active li:nth-child(2) { transition-delay: 0.3s; }
         .side-menu.active li:nth-child(3) { transition-delay: 0.4s; }
         .side-menu.active li:nth-child(4) { transition-delay: 0.5s; }
         .side-menu.active li:nth-child(5) { transition-delay: 0.6s; }
+        .side-menu.active li:nth-child(6) { transition-delay: 0.7s; }
 
         .side-menu-content a {
             font-family: 'Playfair Display', serif;
@@ -294,7 +293,7 @@
 
         /* MISSION */
         .mission-statement {
-            padding: 80px 20px; /* Reduced and equalized */
+            padding: 80px 20px; 
             text-align: center;
             background: var(--light-beige);
         }
@@ -312,7 +311,7 @@
         .section-title {
             font-size: 2.2rem;
             text-align: center;
-            margin-bottom: 60px; /* Standardized spacing */
+            margin-bottom: 60px; 
             letter-spacing: 10px;
             position: relative;
             text-transform: uppercase;
@@ -330,7 +329,7 @@
 
         /* CONCERNS */
         .concerns {
-            padding: 80px 0; /* Standardized spacing */
+            padding: 80px 0; 
             background: var(--white);
         }
 
@@ -393,9 +392,104 @@
             color: var(--beige-accent);
         }
 
+        /* DOCTOR SECTION */
+        .doctor {
+            padding: 0; 
+            background: var(--white);
+        }
+
+        .doctor .section-title {
+            margin-top: 40px; 
+            margin-bottom: 40px; 
+        }
+
+        /* === SKETCH-STYLE DOCTOR SECTION === */
+        .doctor-sketch-grid {
+            display: grid;
+            grid-template-columns: 260px 1fr; 
+            gap: 60px;
+            align-items: stretch;
+            margin-bottom: 60px; 
+        }
+
+        /* LEFT SIDE */
+        .doctor-sketch-left {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .doctor-photo-box {
+            border: 2px solid var(--dark-grey);
+            padding: 10px;
+            margin-bottom: 15px;
+            background: var(--white);
+        }
+
+        .doctor-photo-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(15%);
+        }
+
+        .doctor-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            color: var(--dark-grey);
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        .doctor-designation {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--beige-accent);
+        }
+
+        /* RIGHT SIDE */
+        .doctor-sketch-right {
+            border: 2px solid var(--dark-grey);
+            padding: 35px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--white);
+        }
+
+        .doctor-info-title {
+            font-size: 1.1rem; /* Increased font size */
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            color: var(--dark-grey);
+            font-weight: 600;
+        }
+
+        /* Highlight line / Underline for header */
+        .doctor-info-highlight {
+            height: 6px;
+            background: var(--beige-accent);
+            margin-bottom: 25px;
+            width: 60px;
+            border-radius: 3px;
+        }
+
+        .doctor-info-text {
+            font-size: 1.15rem; /* Increased font size */
+            line-height: 1.8;
+            color: var(--text-muted);
+            font-weight: 400; /* Adjusted for readability at larger size */
+        }
+
         /* TREATMENTS */
         .treatments {
-            padding: 80px 0; /* Standardized spacing */
+            padding: 80px 0; 
             background: var(--light-beige);
         }
 
@@ -457,7 +551,7 @@
 
         /* ABOUT / PHILOSOPHY */
         .about {
-            padding: 80px 0; /* Standardized spacing */
+            padding: 80px 0; 
             background: var(--white);
         }
 
@@ -477,9 +571,8 @@
 
         .secondary-btn {
             background: transparent;
-            border: 1.5px solid var(--dark-grey);
-            color: var(--dark-grey);
-            padding: 16px 45px;
+            border: 1px solid var(--dark-grey);
+            padding: 12px 30px;
             font-weight: 600;
             letter-spacing: 3px;
             cursor: pointer;
@@ -495,7 +588,7 @@
 
         /* FAQ SECTION */
         .faq {
-            padding: 80px 0; /* Equalized */
+            padding: 80px 0; 
             background: var(--light-beige);
         }
 
@@ -649,7 +742,7 @@
         }
 
         .sticky-item.highlight {
-            background: var(--beige-accent);
+            background: var(--dark-grey);
             color: var(--white);
         }
 
@@ -657,12 +750,23 @@
         @media (max-width: 991px) {
             .desktop-nav { display: none; }
             .hero-title { font-size: 3.2rem; }
-            .mission-statement p { font-size: 1.4rem; }
             .section-title { font-size: 1.8rem; }
             .hero { height: 75vh; }
-            .side-menu-content a { font-size: 1.8rem; }
-            .mission-statement, .concerns, .treatments, .about, .faq {
+            .mission-statement, .concerns, .treatments, .about, .faq, .doctor {
                 padding: 60px 0; 
+            }
+            .doctor { padding: 0; }
+            .doctor-sketch-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                margin-bottom: 40px;
+            }
+            .doctor-sketch-right {
+                padding: 30px 25px;
+            }
+            .doctor-photo-box {
+                max-width: 260px;
+                margin: 0 auto 20px;
             }
         }
     </style>
@@ -676,6 +780,7 @@
         <div style="display: flex; align-items: center;">
             <nav class="desktop-nav">
                 <a href="#home">Home</a>
+                <a href="#doctor">Our Doctor</a>
                 <a href="#concerns">Concern</a>
                 <a href="#treatments">Treatment</a>
                 <a href="#about">The Clinic</a>
@@ -694,6 +799,7 @@
 <div class="side-menu" id="sideMenu">
     <div class="side-menu-content">
         <ul>
+            <li><a href="#doctor" class="menu-link">About The Doctor</a></li>
             <li><a href="#concerns" class="menu-link">Common Concerns</a></li>
             <li><a href="#treatments" class="menu-link">Clinical Solutions</a></li>
             <li><a href="#about" class="menu-link">The Philosophy</a></li>
@@ -763,6 +869,41 @@
     </div>
 </section>
 
+<!-- DOCTOR SECTION -->
+<section class="doctor" id="doctor">
+    <div class="container">
+        <h2 class="section-title">About the Doctor</h2>
+        
+        <div class="doctor-sketch-grid">
+            <!-- LEFT : PHOTO + NAME + DESIGNATION -->
+            <div class="doctor-sketch-left">
+                <div class="doctor-photo-box">
+                    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=800&auto=format&fit=crop"
+                         alt="Dr. Shivani Nalawade">
+                </div>
+                <div class="doctor-name">
+                    Dr. Shivani Nalawade
+                </div>
+                <div class="doctor-designation">
+                    Aesthetic & Clinical Dermatology
+                </div>
+            </div>
+            
+            <!-- RIGHT : INFORMATION CARD -->
+            <div class="doctor-sketch-right">
+                <h3 class="doctor-info-title">INFORMATION</h3>
+                <div class="doctor-info-highlight"></div>
+
+                <p class="doctor-info-text">
+                    Dr. Shivani Nalawade is a dedicated aesthetic practitioner with a passion for helping patients achieve healthy, confident skin and hair. With a patient-centric approach, she believes in personalized treatment plans that combine medical expertise with advanced aesthetic technology.
+                    <br><br>
+                    At Dermafix 24, every treatment is carefully designed after detailed consultation, ensuring safety, effectiveness, and natural-looking results.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- TREATMENTS -->
 <section class="treatments" id="treatments">
     <div class="container">
@@ -819,7 +960,6 @@
     <div class="container">
         <h2 class="section-title">Common Questions</h2>
         <div class="faq-container">
-            <!-- New FAQ Item Added on Top -->
             <div class="faq-item">
                 <div class="faq-question">
                     Why Choose Dermafix 24?
@@ -928,7 +1068,6 @@
         const manualClose = document.getElementById('manualClose');
         const body = document.body;
 
-        // Toggle Side Menu
         function toggleMenu() {
             menuToggle.classList.toggle('active');
             sideMenu.classList.toggle('active');
@@ -938,7 +1077,6 @@
         menuToggle.addEventListener('click', toggleMenu);
         manualClose.addEventListener('click', toggleMenu);
 
-        // Close menu when a link is clicked
         menuLinks.forEach(link => {
             link.addEventListener('click', () => {
                 if (sideMenu.classList.contains('active')) {
@@ -947,7 +1085,6 @@
             });
         });
 
-        // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
@@ -964,12 +1101,10 @@
             });
         });
 
-        // FAQ Accordion Toggle
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
             question.addEventListener('click', () => {
-                // Close other items if one is clicked 
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item) otherItem.classList.remove('active');
                 });
@@ -977,7 +1112,6 @@
             });
         });
 
-        // Booking Modal Action
         const openModal = (e) => {
             if(e) e.preventDefault();
             const overlay = document.createElement('div');
@@ -1005,12 +1139,10 @@
             overlay.onclick = (event) => { if(event.target === overlay) overlay.remove(); };
         };
 
-        // Bind all booking triggers
         document.querySelectorAll('.nav-cta, .primary-btn, #mobileBook, #menuBookBtn, #heroBooking').forEach(btn => {
             btn.addEventListener('click', openModal);
         });
 
-        // Scroll Navbar effect
         const navbar = document.querySelector('.navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 80) {
