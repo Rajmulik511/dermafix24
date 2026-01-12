@@ -63,7 +63,7 @@
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 2500; /* Increased to be higher than the side-menu */
+            z-index: 2500; 
             box-shadow: 0 1px 15px rgba(0,0,0,0.03);
             transition: var(--transition);
         }
@@ -124,7 +124,7 @@
             flex-direction: column;
             justify-content: space-between;
             cursor: pointer;
-            z-index: 2600; /* Ensuring it's above the menu overlay */
+            z-index: 2600; 
             margin-left: 30px;
             position: relative;
         }
@@ -156,7 +156,7 @@
             width: 100%;
             height: 100%;
             background-color: var(--white);
-            z-index: 2000; /* Lower than navbar so toggle stays visible */
+            z-index: 2000; 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -294,7 +294,7 @@
 
         /* MISSION */
         .mission-statement {
-            padding: 140px 20px;
+            padding: 80px 20px; /* Reduced and equalized */
             text-align: center;
             background: var(--light-beige);
         }
@@ -312,7 +312,7 @@
         .section-title {
             font-size: 2.2rem;
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 60px; /* Standardized spacing */
             letter-spacing: 10px;
             position: relative;
             text-transform: uppercase;
@@ -330,7 +330,7 @@
 
         /* CONCERNS */
         .concerns {
-            padding: 130px 0;
+            padding: 80px 0; /* Standardized spacing */
             background: var(--white);
         }
 
@@ -395,7 +395,7 @@
 
         /* TREATMENTS */
         .treatments {
-            padding: 150px 0;
+            padding: 80px 0; /* Standardized spacing */
             background: var(--light-beige);
         }
 
@@ -407,7 +407,7 @@
 
         .treatment-card {
             background: var(--white);
-            padding: 80px 50px;
+            padding: 60px 50px; 
             text-align: center;
             border: 1px solid rgba(0,0,0,0.03);
             transition: var(--transition);
@@ -455,9 +455,9 @@
             border-bottom-color: var(--beige-accent);
         }
 
-        /* ABOUT */
+        /* ABOUT / PHILOSOPHY */
         .about {
-            padding: 150px 0;
+            padding: 80px 0; /* Standardized spacing */
             background: var(--white);
         }
 
@@ -491,6 +491,71 @@
         .secondary-btn:hover {
             background: var(--dark-grey);
             color: var(--white);
+        }
+
+        /* FAQ SECTION */
+        .faq {
+            padding: 80px 0; /* Equalized */
+            background: var(--light-beige);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(50, 50, 50, 0.1);
+            padding: 15px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 20px 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--dark-grey);
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            color: var(--beige-accent);
+        }
+
+        .faq-icon {
+            font-size: 0.8rem;
+            transition: transform 0.4s ease;
+            margin-left: 20px;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+        }
+
+        .faq-answer p {
+            padding: 0 0 30px 0;
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            transition: max-height 0.4s cubic-bezier(1, 0, 1, 0);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
         }
 
         /* FOOTER */
@@ -596,6 +661,9 @@
             .section-title { font-size: 1.8rem; }
             .hero { height: 75vh; }
             .side-menu-content a { font-size: 1.8rem; }
+            .mission-statement, .concerns, .treatments, .about, .faq {
+                padding: 60px 0; 
+            }
         }
     </style>
 </head>
@@ -629,6 +697,7 @@
             <li><a href="#concerns" class="menu-link">Common Concerns</a></li>
             <li><a href="#treatments" class="menu-link">Clinical Solutions</a></li>
             <li><a href="#about" class="menu-link">The Philosophy</a></li>
+            <li><a href="#faq" class="menu-link">FAQs</a></li>
             <li><a href="#" class="menu-link" id="menuBookBtn">Book Appointment</a></li>
             <li><a href="javascript:void(0)" class="menu-link close-menu-text" id="manualClose">✕ Close</a></li>
         </ul>
@@ -745,6 +814,71 @@
     </div>
 </section>
 
+<!-- FAQ SECTION -->
+<section class="faq" id="faq">
+    <div class="container">
+        <h2 class="section-title">Common Questions</h2>
+        <div class="faq-container">
+            <!-- New FAQ Item Added on Top -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    Why Choose Dermafix 24?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        • Dermatologist-supervised treatments<br>
+                        • Advanced USFDA-approved technology<br>
+                        • Customized skin & hair solutions<br>
+                        • Safe, hygienic & ethical practice<br>
+                        • Visible, long-lasting results
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Are these treatments safe?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes. All treatments at Dermafix24 are performed under dermatological supervision using clinically proven and safe techniques.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is there any downtime after treatments?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Most treatments have minimal to no downtime. Some procedures like chemical peels or lasers may require short recovery depending on intensity.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How many sessions are required?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>The number of sessions varies depending on your skin or hair concern. A personalized treatment plan is created after consultation.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is consultation mandatory?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes. Consultation helps us understand your concern and recommend the most suitable treatment for you.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="footer" id="contact">
     <div class="container footer-grid">
@@ -817,7 +951,7 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                if (href === "#") return;
+                if (href === "#" || href === "javascript:void(0)") return;
                 
                 e.preventDefault();
                 const target = document.querySelector(href);
@@ -830,9 +964,22 @@
             });
         });
 
+        // FAQ Accordion Toggle
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close other items if one is clicked 
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) otherItem.classList.remove('active');
+                });
+                item.classList.toggle('active');
+            });
+        });
+
         // Booking Modal Action
         const openModal = (e) => {
-            e.preventDefault();
+            if(e) e.preventDefault();
             const overlay = document.createElement('div');
             overlay.style.cssText = `
                 position: fixed; top: 0; left: 0; width: 100%; height: 100%;
