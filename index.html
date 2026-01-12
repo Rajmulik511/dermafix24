@@ -463,7 +463,7 @@
         }
 
         .doctor-info-title {
-            font-size: 1.1rem; /* Increased font size */
+            font-size: 1.1rem; 
             letter-spacing: 5px;
             text-transform: uppercase;
             margin-bottom: 12px;
@@ -481,13 +481,13 @@
         }
 
         .doctor-info-text {
-            font-size: 1.15rem; /* Increased font size */
+            font-size: 1.15rem; 
             line-height: 1.8;
             color: var(--text-muted);
-            font-weight: 400; /* Adjusted for readability at larger size */
+            font-weight: 400; 
         }
 
-        /* TREATMENTS */
+        /* TREATMENTS - UPDATED WITH FLIP CARD FUNCTIONALITY */
         .treatments {
             padding: 80px 0; 
             background: var(--light-beige);
@@ -500,53 +500,123 @@
         }
 
         .treatment-card {
-            background: var(--white);
-            padding: 60px 50px; 
+            perspective: 1000px;
+            cursor: pointer;
+            min-height: 500px;
+            background: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
             text-align: center;
-            border: 1px solid rgba(0,0,0,0.03);
-            transition: var(--transition);
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
         }
 
-        .treatment-card:hover {
-            box-shadow: 0 30px 60px rgba(0,0,0,0.06);
-            transform: translateY(-10px);
+        .treatment-card.flipped .card-inner {
+            transform: rotateY(180deg);
         }
 
-        .treatment-card h3 {
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            background: var(--white);
+            border: 2px solid var(--dark-grey);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 50px 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .card-front h3 {
             font-size: 1.8rem;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--beige-accent);
+            margin-bottom: 20px;
             letter-spacing: 4px;
+            text-transform: uppercase;
         }
 
-        .treatment-card ul {
-            list-style: none;
-            margin-bottom: 45px;
+        .card-front .tagline {
+            font-size: 0.9rem;
+            color: var(--beige-accent);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
         }
 
-        .treatment-card li {
-            margin-bottom: 15px;
-            font-size: 0.85rem;
+        .card-front .hint {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            margin-top: auto;
+            text-transform: uppercase;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background: var(--white);
+            text-align: left;
+            justify-content: flex-start;
+            overflow-y: auto;
+            padding: 40px 30px;
+        }
+
+        .card-back::-webkit-scrollbar {
+            width: 4px;
+        }
+        .card-back::-webkit-scrollbar-thumb {
+            background: var(--beige-accent);
+            border-radius: 10px;
+        }
+
+        .card-back h4 {
+            font-size: 1rem;
+            margin: 20px 0 10px;
+            color: var(--dark-grey);
+            border-bottom: 1px solid var(--beige-accent);
+            padding-bottom: 5px;
             text-transform: uppercase;
             letter-spacing: 2px;
+        }
+
+        .card-back h4:first-child {
+            margin-top: 0;
+        }
+
+        .card-back p {
+            font-size: 0.9rem;
             color: var(--text-muted);
+            margin-bottom: 15px;
+            line-height: 1.6;
         }
 
-        .explore-btn {
-            text-decoration: none;
-            color: var(--dark-grey);
-            font-weight: 600;
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            padding: 8px 0;
-            border-bottom: 1px solid var(--dark-grey);
-            transition: var(--transition);
+        .card-back ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 15px;
         }
 
-        .explore-btn:hover {
+        .card-back li {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .card-back li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
             color: var(--beige-accent);
-            border-bottom-color: var(--beige-accent);
         }
 
         /* ABOUT / PHILOSOPHY */
@@ -752,6 +822,7 @@
             .hero-title { font-size: 3.2rem; }
             .section-title { font-size: 1.8rem; }
             .hero { height: 75vh; }
+            .side-menu-content a { font-size: 1.8rem; }
             .mission-statement, .concerns, .treatments, .about, .faq, .doctor {
                 padding: 60px 0; 
             }
@@ -767,6 +838,9 @@
             .doctor-photo-box {
                 max-width: 260px;
                 margin: 0 auto 20px;
+            }
+            .treatment-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -904,41 +978,117 @@
     </div>
 </section>
 
-<!-- TREATMENTS -->
+<!-- TREATMENTS SECTION - UPDATED CONTENT AND INTERACTION -->
 <section class="treatments" id="treatments">
     <div class="container">
         <h2 class="section-title">Clinical Solutions</h2>
         <div class="treatment-grid">
+            
+            <!-- 1. GFC Therapy Card -->
             <div class="treatment-card">
-                <h3>SKIN CARE</h3>
-                <ul>
-                    <li>Acne & Pigmentation</li>
-                    <li>Clinical Peels</li>
-                    <li>Soprano Laser Therapy</li>
-                    <li>Bespoke Injectables</li>
-                </ul>
-                <a href="#" class="explore-btn">VIEW ALL</a>
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h3>GFC Therapy</h3>
+                        <p class="tagline">Advanced regenerative treatment for hair & skin</p>
+                        <p class="hint">Click for details</p>
+                    </div>
+                    <div class="card-back">
+                        <h4>GFC Therapy (Growth Factor Concentrate)</h4>
+                        <p>An advanced regenerative treatment that uses purified growth factors extracted from your own blood to stimulate cell repair and natural regeneration.</p>
+                        
+                        <h4>GFC for Hair</h4>
+                        <ul>
+                            <li>Reduces hair fall</li>
+                            <li>Stimulates new hair growth</li>
+                            <li>Improves hair density & thickness</li>
+                            <li>Strengthens hair follicles</li>
+                        </ul>
+
+                        <h4>GFC for Skin</h4>
+                        <ul>
+                            <li>Improves skin texture and glow</li>
+                            <li>Reduces fine lines and wrinkles</li>
+                            <li>Helps in skin rejuvenation and repair</li>
+                        </ul>
+
+                        <h4>Benefits</h4>
+                        <ul>
+                            <li>Safe & natural</li>
+                            <li>Minimal downtime</li>
+                            <li>Painless procedure</li>
+                            <li>Long-lasting results</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+
+            <!-- 2. Chemical Peel Card -->
             <div class="treatment-card">
-                <h3>BODY SCIENCE</h3>
-                <ul>
-                    <li>Exilis Ultra 360</li>
-                    <li>Medical Sculpting</li>
-                    <li>Vitamin Infusions</li>
-                    <li>Body Transformation</li>
-                </ul>
-                <a href="#" class="explore-btn">VIEW ALL</a>
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h3>Chemical Peel</h3>
+                        <p class="tagline">Safe and effective skin resurfacing treatment</p>
+                        <p class="hint">Click for details</p>
+                    </div>
+                    <div class="card-back">
+                        <h4>Chemical Peel</h4>
+                        <p>Dermatological treatments that exfoliate using medical-grade solutions to improve skin tone and clarity. Customized based on your specific concern.</p>
+                        
+                        <h4>Treats</h4>
+                        <ul>
+                            <li>Acne & acne scars</li>
+                            <li>Pigmentation & melasma</li>
+                            <li>Uneven skin tone</li>
+                            <li>Dull & aging skin</li>
+                        </ul>
+
+                        <h4>Benefits</h4>
+                        <ul>
+                            <li>Brighter, smoother skin</li>
+                            <li>Reduced pigmentation</li>
+                            <li>Controlled acne</li>
+                            <li>Minimal downtime (depending on type)</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+
+            <!-- 3. PRP Therapy Card -->
             <div class="treatment-card">
-                <h3>HAIR SCIENCE</h3>
-                <ul>
-                    <li>Hair Vitalization</li>
-                    <li>GFC Scalp Therapy</li>
-                    <li>Clinical Regrowth</li>
-                    <li>Growth Factor Protocol</li>
-                </ul>
-                <a href="#" class="explore-btn">VIEW ALL</a>
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h3>PRP Therapy</h3>
+                        <p class="tagline">Natural treatment for hair regrowth & rejuvenation</p>
+                        <p class="hint">Click for details</p>
+                    </div>
+                    <div class="card-back">
+                        <h4>PRP Therapy (Platelet-Rich Plasma)</h4>
+                        <p>Uses your own blood platelets to stimulate healing and regeneration, widely used for hair loss and skin vitality.</p>
+                        
+                        <h4>PRP for Hair</h4>
+                        <ul>
+                            <li>Reduces hair fall</li>
+                            <li>Stimulates dormant hair follicles</li>
+                            <li>Improves hair volume</li>
+                        </ul>
+
+                        <h4>PRP for Skin</h4>
+                        <ul>
+                            <li>Improves skin quality</li>
+                            <li>Reduces fine lines</li>
+                            <li>Helps with acne scars</li>
+                        </ul>
+
+                        <h4>Benefits</h4>
+                        <ul>
+                            <li>Natural & safe</li>
+                            <li>No chemicals</li>
+                            <li>Minimal recovery time</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 </section>
@@ -1109,6 +1259,14 @@
                     if (otherItem !== item) otherItem.classList.remove('active');
                 });
                 item.classList.toggle('active');
+            });
+        });
+
+        // --- FLIP CARD LOGIC ---
+        const treatmentCards = document.querySelectorAll('.treatment-card');
+        treatmentCards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('flipped');
             });
         });
 
