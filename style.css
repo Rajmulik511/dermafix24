@@ -281,15 +281,15 @@ h1, h2, h3, .logo {
 
 /* MISSION */
 .mission-statement {
-    padding: 80px 20px; 
+    padding: 40px 20px; 
     text-align: center;
     background: var(--light-beige);
 }
 
 .mission-statement p {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    max-width: 950px;
+    font-size: 1.7rem;
+    max-width: 1100px;
     margin: 0 auto;
     color: var(--dark-grey);
     line-height: 1.5;
@@ -317,7 +317,7 @@ h1, h2, h3, .logo {
 
 /* CONCERNS */
 .concerns {
-    padding: 80px 0; 
+    padding: 40px 0; 
     background: var(--white);
 }
 
@@ -477,7 +477,7 @@ h1, h2, h3, .logo {
 
 /* TREATMENTS - UPDATED WITH FLIP CARD FUNCTIONALITY */
 .treatments {
-    padding: 80px 0; 
+    padding: 40px 0; 
     background: var(--light-beige);
 }
 
@@ -609,7 +609,7 @@ h1, h2, h3, .logo {
 
 /* ABOUT / PHILOSOPHY */
 .about {
-    padding: 80px 0; 
+    padding: 40px 0; 
     background: var(--white);
 }
 
@@ -646,7 +646,7 @@ h1, h2, h3, .logo {
 
 /* FAQ SECTION */
 .faq {
-    padding: 80px 0; 
+    padding: 40px 0; 
     background: var(--light-beige);
 }
 
@@ -713,14 +713,14 @@ h1, h2, h3, .logo {
 .footer {
     background: var(--dark-grey);
     color: var(--white);
-    padding: 100px 0 50px;
+    padding: 40px 0 50px;
 }
 
 .footer-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 70px;
-    margin-bottom: 80px;
+    margin-bottom: 20px;
 }
 
 .footer-brand .logo {
@@ -764,7 +764,7 @@ h1, h2, h3, .logo {
 
 .copyright {
     text-align: center;
-    padding-top: 50px;
+    padding-top: 30px;
     border-top: 1px solid rgba(255,255,255,0.05);
     font-size: 0.85rem;
     color: rgba(255,255,255,0.3);
@@ -933,4 +933,15 @@ h1, h2, h3, .logo {
         width: 100px;
         height: 100px;
     }
+}
+.glow-name {
+  color: white;
+  text-decoration: none;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.glow-name:hover {
+  color: #668aff;   /* change to any color you like */
+  text-decoration: underline;
 }
