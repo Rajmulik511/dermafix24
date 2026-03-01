@@ -104,4 +104,34 @@ document.addEventListener('DOMContentLoaded', () => {
             navbar.style.boxShadow = 'none';
         }
     });
+
+    // --- SERVICES TABS LOGIC ---
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    tabLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const tabId = link.getAttribute('data-tab');
+
+            tabLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
+            tabPanes.forEach(pane => {
+                if (pane.id === tabId) {
+                    pane.classList.add('active');
+                } else {
+                    pane.classList.remove('active');
+                }
+            });
+        });
+    });
+
+    // --- TREATMENT ACCORDION LOGIC ---
+    const treatmentItems = document.querySelectorAll('.treatment-item');
+    treatmentItems.forEach(item => {
+        const title = item.querySelector('h4');
+        title.addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
 });
