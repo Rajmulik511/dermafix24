@@ -253,7 +253,7 @@ h1, h2, h3, .logo {
 
 .hero-description {
     font-size: 1.1rem;
-    max-width: 650px;
+    max-width: 700px;
     margin: 0 auto 45px;
     font-weight: 600; 
     color: var(--dark-grey);
