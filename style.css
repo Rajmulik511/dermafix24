@@ -959,3 +959,113 @@ h1, h2, h3, .logo {
   color: #668aff;   /* change to any color you like */
   text-decoration: underline;
 }
+
+/* TESTIMONIALS SECTION */
+.testimonials {
+    padding: 20px 0;
+    background: var(--white);
+}
+
+.testimonial-slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.testimonial-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.testimonial-card {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    background: var(--light-beige);
+    border: 1px solid var(--beige-accent);
+    padding: 30px;
+    margin: 0 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 400px; /* Fixed height */
+}
+
+.review-text {
+    overflow-y: auto;
+    height: 100%;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Custom scrollbar for review text */
+.review-text::-webkit-scrollbar {
+    width: 5px;
+}
+
+.review-text::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+}
+
+.review-text::-webkit-scrollbar-thumb {
+    background: var(--beige-accent);
+}
+
+.customer-name {
+    margin-top: 20px;
+    font-weight: 600;
+    text-align: right;
+    color: var(--dark-grey);
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--dark-grey);
+    color: var(--white);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.prev-btn {
+    left: -10px;
+}
+
+.next-btn {
+    right: -10px;
+}
+
+@media (max-width: 991px) {
+    .testimonial-card {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.testimonial-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.stars {
+    color: #ffc107; /* A gold color for the stars */
+    font-size: 1.2rem;
+}
+
+.customer-name {
+    margin-top: 0; /* Override existing margin */
+}
+
