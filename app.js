@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <p style="margin-bottom: 2rem; color: #323232; opacity: 0.8; line-height: 1.6;">Fill details in the form link provided below and we will get back to you.</p>
             
             <!-- Highlighted Boxed Link -->
-            <a href="https://forms.gle/dummyLink" target="_blank" style="display: inline-block; margin-bottom: 2.5rem; background: #323232; color: white; padding: 18px 45px; font-weight: 600; text-decoration: none; letter-spacing: 2px; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; border: none; cursor: pointer;">Open Google Form</a>
+            <a href="https://forms.gle/Y5pMdGaAmm93QS658" target="_blank" style="display: inline-block; margin-bottom: 2.5rem; background: #323232; color: white; padding: 18px 45px; font-weight: 600; text-decoration: none; letter-spacing: 2px; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; border: none; cursor: pointer;">Open Google Form</a>
             
             <br>
             <!-- Simple Type Dismiss Button -->
