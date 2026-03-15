@@ -64,6 +64,18 @@ h1, h2, h3, .logo {
 
 .logo-container {
     display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    width: 50px; /* Adjust size as needed */
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.logo-text {
+    display: flex;
     flex-direction: column;
 }
 
@@ -846,6 +858,22 @@ h1, h2, h3, .logo {
     }
 }
 
+@media (max-width: 768px) {
+    .logo-image {
+        width: 40px;
+        height: 40px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .navbar-tagline {
+        font-size: 8px;
+    }
+}
+
+
 /* DETAILED SERVICES SECTION */
 .services-details {
     padding: 80px 0;
@@ -1068,4 +1096,3 @@ h1, h2, h3, .logo {
 .customer-name {
     margin-top: 0; /* Override existing margin */
 }
-
