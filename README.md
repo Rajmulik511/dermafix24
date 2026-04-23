@@ -1,1 +1,1 @@
-https://rajmulik511.github.io/dermafix24/
+https://www.dermafix24.com/
